@@ -7,7 +7,7 @@ Users can connect their MetaMask wallet, claim test LIB tokens, borrow digital r
 ---
 
 ## ◀️ Demo
-
+[Demo Video](https://drive.google.com/file/d/1uAIbOGIO3UpNg-Z_8PfWasJsydxoLuhf/view?usp=drivesdk)
 
 ---
 
@@ -461,7 +461,9 @@ The deployed application connects to the already deployed Ethereum Sepolia smart
 Deployment configuration and the public application URL are added below.
 
 **Live Application:**  
-`Coming soon`
+```bash
+    https://decentralized-library-blockchain-pr.vercel.app/
+```
 
 **GitHub Repository:**  
 ```bash
