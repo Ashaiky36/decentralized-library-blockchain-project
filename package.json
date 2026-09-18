@@ -1,7 +1,7 @@
 {
   "name": "decentralized-library-blockchain-project",
   "version": "1.0.0",
-  "description": "A Web3-based decentralized library management system built on Ethereum (Sepolia Testnet). The application uses Smart Contracts written in Solidity to let users list, view, borrow, and return books using a custom utility token (`LIB`).",
+  "description": "A Web3-based decentralized library dApp built on Ethereum Sepolia. Users can connect a MetaMask wallet, claim LIB tokens, borrow digital resources, view borrowing history, and access borrowed resources.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
