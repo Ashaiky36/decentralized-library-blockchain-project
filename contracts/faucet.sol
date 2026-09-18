@@ -2,13 +2,7 @@
 pragma solidity ^0.8.20;
 
 interface ILibraryToken {
-    function mint(
-        address to,
-        uint256 amount
-    ) external;
-
-    function transferFrom(
-        address from,
+    function transfer(
         address to,
         uint256 amount
     ) external returns (bool);
@@ -41,7 +35,16 @@ contract Faucet {
         uint256 amount
     );
 
+    event LibraryContractUpdated(
+        address indexed libraryAddress
+    );
+
     constructor(address _tokenAddress) {
+        require(
+            _tokenAddress != address(0),
+            "Invalid token address"
+        );
+
         token = ILibraryToken(_tokenAddress);
         owner = msg.sender;
     }
@@ -71,6 +74,10 @@ contract Faucet {
         );
 
         libraryContract = _libraryContract;
+
+        emit LibraryContractUpdated(
+            _libraryContract
+        );
     }
 
     function claimTokens() public {
@@ -80,9 +87,22 @@ contract Faucet {
             "Please wait before claiming again"
         );
 
+        require(
+            token.balanceOf(address(this)) >= FAUCET_AMOUNT,
+            "Faucet has insufficient tokens"
+        );
+
         lastClaimTime[msg.sender] = block.timestamp;
 
-        token.mint(msg.sender, FAUCET_AMOUNT);
+        bool success = token.transfer(
+            msg.sender,
+            FAUCET_AMOUNT
+        );
+
+        require(
+            success,
+            "Token transfer failed"
+        );
 
         emit TokensClaimed(
             msg.sender,
@@ -94,13 +114,17 @@ contract Faucet {
         address user
     ) public onlyLibrary {
         require(
-            token.balanceOf(user) >= BORROW_COST,
-            "Insufficient library tokens"
+            user != address(0),
+            "Invalid user address"
         );
 
-        bool success = token.transferFrom(
+        require(
+            token.balanceOf(address(this)) >= BORROW_COST,
+            "Faucet has insufficient tokens"
+        );
+
+        bool success = token.transfer(
             user,
-            address(this),
             BORROW_COST
         );
 
