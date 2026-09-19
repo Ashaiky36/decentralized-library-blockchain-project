@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Decentralized Library</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="#" class="brand">
+        <span class="brand-mark">D</span>
+        <span>Decentralized Library</span>
+      </a>
+
+      <button id="connectButton" class="button button-primary">
+        Connect Wallet
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <span class="eyebrow">Knowledge on-chain</span>
+
+          <h1>
+            Read, borrow, and discover
+            <span>without boundaries.</span>
+          </h1>
+
+          <p>
+            A decentralized library powered by Ethereum. Connect your wallet
+            to access resources and borrow digital knowledge using LIB tokens.
+          </p>
+
+          <div class="hero-actions">
+            <button id="heroConnectButton" class="button button-primary">
+              Connect Wallet
+            </button>
+
+            <a href="#resources" class="button button-secondary">
+              Explore Library
+              <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orb orb-one"></div>
+          <div class="orb orb-two"></div>
+
+          <div class="book-illustration">
+            <div class="book-cover">
+              <div class="book-label">LIBRARY</div>
+              <div class="book-title">Knowledge<br />Belongs<br />to Everyone</div>
+              <div class="book-symbol">◈</div>
+            </div>
+
+            <div class="book-pages"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="stats-section">
+      <div class="container stats-grid">
+        <article class="stat-card">
+          <div class="stat-icon">◉</div>
+          <div>
+            <p class="stat-label">Your LIB Balance</p>
+            <p id="tokenBalance" class="stat-value">— LIB</p>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon">◇</div>
+          <div>
+            <p class="stat-label">Faucet Balance</p>
+            <p id="faucetBalance" class="stat-value">— LIB</p>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon">▣</div>
+          <div>
+            <p class="stat-label">Available Resources</p>
+            <p id="resourceCount" class="stat-value">—</p>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon">✓</div>
+          <div>
+            <p class="stat-label">Network</p>
+            <p id="networkStatus" class="stat-value">Disconnected</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources" class="resources-section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">The collection</span>
+            <h2>Explore the library</h2>
+          </div>
+
+          <p>
+            Browse decentralized resources and borrow the ones you want to
+            explore.
+          </p>
+        </div>
+
+        <div id="resourceGrid" class="resource-grid">
+          <div class="empty-message">
+            Connect your wallet to load library resources.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Borrowing history -->
+    <section class="history-section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Your activity</span>
+            <h2>Borrowing history</h2>
+          </div>
+
+          <p>
+            Resources already borrowed by your connected wallet.
+          </p>
+        </div>
+
+        <div id="historyList" class="history-list">
+          <div class="empty-message">
+            Connect your wallet to view borrowing history.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faucet -->
+    <section class="faucet-section">
+      <div class="container">
+        <div class="faucet-card">
+          <div class="faucet-content">
+            <span class="eyebrow">Get started</span>
+
+            <h2>Need LIB tokens?</h2>
+
+            <p>
+              Claim 5 LIB tokens from the faucet. Tokens are used to borrow
+              resources from the decentralized library.
+            </p>
+
+            <button id="claimButton" class="button button-light" disabled>
+              Claim 5 LIB
+            </button>
+
+            <div id="status" class="status-message" aria-live="polite"></div>
+          </div>
+
+          <div class="faucet-decoration" aria-hidden="true">
+            <div class="coin coin-large">L</div>
+            <div class="coin coin-small coin-one">L</div>
+            <div class="coin coin-small coin-two">L</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wallet -->
+    <section class="wallet-section">
+      <div class="container wallet-content">
+        <div>
+          <span class="eyebrow">Connected account</span>
+          <p id="walletAddress" class="wallet-address">
+            No wallet connected
+          </p>
+        </div>
+
+        <button id="disconnectButton" class="button button-secondary" hidden>
+          Disconnect
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© 2026 Decentralized Library</p>
+      <p>Built on Ethereum Sepolia</p>
+    </div>
+  </footer>
+
+  <!-- Reading modal -->
+  <div id="readerModal" class="reader-modal" hidden>
+    <div class="reader-overlay" id="readerOverlay"></div>
+
+    <article class="reader-panel">
+      <button
+        id="closeReaderButton"
+        class="reader-close"
+        type="button"
+        aria-label="Close reader"
+      >
+        ×
+      </button>
+
+      <span class="eyebrow">Decentralized reading room</span>
+
+      <h2 id="readerTitle">Resource title</h2>
+
+      <div id="readerContent" class="reader-content"></div>
+    </article>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.14.0/dist/ethers.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
